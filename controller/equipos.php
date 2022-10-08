@@ -11,5 +11,17 @@ switch ($_GET["option"]) {
         $datos = $modelos->getEquipos();
         echo json_encode($datos);
         break;
+    case "agregarEquipo":
+        $datos = $modelos->agregarEquipo($body['nombre_e'], $body['logo_e']);
+        echo json_encode($datos);
+        break;
+    case "editarEquipo":
+        $datos = $modelos->editarEquipo($body['id_e'], $body['nombre_e'], $body['logo_e']);
+        echo json_encode($datos);
+        break;
+    case "borrarEquipo":
+        $datos = $modelos->borrarEquipo($body['id_e']);
+        echo json_encode($datos);
+        break;
 
 }

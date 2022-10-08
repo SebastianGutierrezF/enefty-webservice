@@ -11,5 +11,16 @@ switch ($_GET["option"]) {
         $datos = $modelos->getArbitros();
         echo json_encode($datos);
         break;
-
+    case "agregarArbitro":
+        $datos = $modelos->agregarArbitro($body['nombre_a'], $body['apellidos_a'], $body['contacto_a'], $body['email_a'], $body['colocacion_a']);
+        echo json_encode($datos);
+        break;
+    case "editarArbitro":
+        $datos = $modelos->editarArbitro($body['id_a'], $body['nombre_a'], $body['apellidos_a'], $body['contacto_a'], $body['email_a'], $body['colocacion_a']);
+        echo json_encode($datos);
+        break;
+    case "borrarArbitro":
+        $datos = $modelos->borrarArbitro($body['id_a']);
+        echo json_encode($datos);
+        break;
 }
