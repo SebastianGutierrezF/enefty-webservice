@@ -39,7 +39,7 @@ class Arbitros extends Conexion {
     function borrarEquipo($id) {
         $db = parent::connect();
         parent::set_names();
-        $sql = "DELETE FROM equipo WHERE id_e = ?;";
+        $sql = "CALL borrarequipo(?);";
         $sql = $db->prepare($sql);
         $sql->bindValue(1, $id);
         $response = $sql->execute();
