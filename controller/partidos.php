@@ -23,4 +23,8 @@ switch ($_GET["option"]) {
         $datos = $modelos->editarPartido($body['id_p'], $body['id_a'], $body['id_e1'], $body['id_e2'], $body['fecha'], $body['hora']);
         echo json_encode($datos);
         break;
+    case "equiposCompletos":
+        $datos = $modelos->equiposCompletos();
+        echo json_encode($datos);
+        break;
 }

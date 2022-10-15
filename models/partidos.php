@@ -48,6 +48,15 @@ class Partidos extends Conexion {
         $sql->bindValue(6, $hora);
         return $sql->execute();
     }
+
+    function equiposCompletos() {
+        $db = parent::connect();
+        parent::set_names();
+        $sql = "SELECT ide_jq AS id_e, equipo AS nombre_e  FROM conteojugadores WHERE conteo >= 11;";
+        $sql = $db->prepare($sql);
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_OBJ);
+    }
 }
 
 ?>
