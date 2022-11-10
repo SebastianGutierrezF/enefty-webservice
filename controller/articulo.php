@@ -9,7 +9,11 @@ switch ($_GET["option"]) {
     // Agrega los casos aquí
     // Crea tus funciones en el models correpondiente
     case "insertarProducto":
-        $datos = $modelo->;
+        $datos = $modelo->insertarProducto($body['nombre_a'], $body['precio_a'], $body['img_a'], $body['idcat_a'], $body['idv_a'], $body['idu_a']);
+        echo json_encode($datos);
+        break;
+    case "obtenerProductos":
+        $datos = $modelo->obtenerProductos();
         echo json_encode($datos);
         break;
 }
