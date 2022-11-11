@@ -6,9 +6,8 @@ $body = json_decode(file_get_contents("php://input"), true);
 
 switch ($_GET["option"]) {
 
-    case "login":
-        $datos = $modelos->login($body['email'], $body['pass'],);
+    case "agregarSaldo":
+        $datos = $modelos->agregarSaldo($body['id_u'], $body['saldo_u']);
         echo json_encode($datos);
         break;
-
 }
