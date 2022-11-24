@@ -38,9 +38,8 @@ class Usuario extends Conexion {
     public function agregarUsuario($usuario_u, $nombres_u, $apellidos_u, $email_u, $pass) {
         $link = parent::connect();
         parent::set_names();
-        // Encripta la contraseña recbidia y la manda a la BD
         $passencrypt = password_hash($pass, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO usuario(`usuario_u`, `nombres_u`, `apelldos_u`, `email_u`, `pass`) VALUES (?,?,?,?,?);";
+        $sql = "INSERT INTO usuario(`usuario_u`, `nombres_u`, `apellidos_u`, `email_u`, `pass`) VALUES (?,?,?,?,?);";
         $sql = $link->prepare($sql);
         $sql->bindValue(1, $usuario_u);
         $sql->bindValue(2, $nombres_u);
