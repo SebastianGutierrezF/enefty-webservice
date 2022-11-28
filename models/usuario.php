@@ -49,5 +49,31 @@ class Usuario extends Conexion {
         $result['status'] = $sql->execute();
         return $result;
     }
+    function get_usuario() {
+        $db = parent::connect();
+        parent::set_names();
+        $sql = "SELECT * FROM usuario;";
+        $sql = $db->prepare($sql);
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_OBJ);
+    }
+    // public function get_usuario_x_id()
+    // {
+    //     $conectar = parent::conexion();
+    //     parent::set_names();
+    //     $sql = "SELECT * FROM usuario WHere id_u = 1;"
+    //     $sql = $db->prepare($sql);
+    //     $sql->execute();
+    //     return $sql->fetchAll(PDO::FETCH_OBJ);
+    // }
+    function get_usuario_x_id() {
+        $db = parent::connect();
+        parent::set_names();
+        $sql = "SELECT * FROM usuario WHERE id_u=1;";
+        $sql = $db->prepare($sql);
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_OBJ);
+    }
+   
 
 }

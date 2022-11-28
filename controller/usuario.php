@@ -21,4 +21,12 @@ switch ($_GET["option"]) {
         $datos = $modelos->agregarUsuario($body['usuario_u'], $body['nombres_u'], $body['apellidos_u'], $body['email_u'], $body['pass']);
         echo json_encode($datos);
         break;
+    case "traerUsuario";
+        $datos = $modelos->get_usuario();
+        echo json_encode($datos);
+        break;
+    case "traerUsuarioxid";
+        $datos = $modelos->get_usuario_x_id();
+        echo json_encode($datos);
+        break;
 }
