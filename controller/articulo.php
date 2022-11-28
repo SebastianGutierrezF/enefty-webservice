@@ -16,4 +16,8 @@ switch ($_GET["option"]) {
         $datos = $modelo->obtenerProductos();
         echo json_encode($datos);
         break;
+    case "obtenerProductosxCategoria":
+        $datos = $modelo->obtenerProductosxCategoria($body['idcat_a']);
+        echo json_encode($datos);
+        break;
 }

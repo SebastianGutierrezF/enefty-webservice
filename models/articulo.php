@@ -24,4 +24,14 @@ class Articulo extends Conexion {
         $sql->execute();
         return $sql->fetchAll(PDO::FETCH_OBJ);
     }
+
+    function obtenerProductosxCategoria($idcat_a) {
+        $db = parent::connect();
+        parent::set_names();
+        $sql = "SELECT * FROM articulo WHERE idcat_a = ?;";
+        $sql = $db->prepare($sql);
+        $sql->bindValue(1, $idcat_a);
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_OBJ);
+    }
 }

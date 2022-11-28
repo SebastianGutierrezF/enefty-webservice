@@ -12,8 +12,12 @@ switch ($_GET["option"]) {
         $datos = $modelo->insertarComentario($body['com'], $body['idu_com'], $body['ida_com']);
         echo json_encode($datos);
         break;
+    case "obtenerComentario":
+        $datos = $modelo->obtenerComentario($body['ida_com']);
+        echo json_encode($datos);
+        break;
     case "obtenerComentarios":
-        $datos = $modelos->obtenerComentarios($body['ida_com']);
+        $datos = $modelo->obtenerComentarios();
         echo json_encode($datos);
         break;
 }
