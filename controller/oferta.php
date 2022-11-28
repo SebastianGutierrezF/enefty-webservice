@@ -13,7 +13,7 @@ switch ($_GET["option"]) {
         echo json_encode($datos);
         break;
     case "obtenerOfertas":
-        $datos = $modelos->obtenerOfertas();
+        $datos = $modelo->obtenerOfertas();
         echo json_encode($datos);
         break;
 }
