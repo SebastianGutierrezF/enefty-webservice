@@ -20,4 +20,12 @@ switch ($_GET["option"]) {
         $datos = $modelo->obtenerComentarios();
         echo json_encode($datos);
         break;
+    case "comentariosXCategoria":
+        $datos = $modelo->comentariosXCategoria($body['id_c']);
+        echo json_encode($datos);
+        break;
+    case "comentariosXNft":
+        $datos = $modelo->comentariosXNft($body['id_a']);
+        echo json_encode($datos);
+        break;
 }
