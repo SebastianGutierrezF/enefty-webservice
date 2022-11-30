@@ -23,12 +23,14 @@ class Venta extends Conexion {
         $idv_a = $sql->fetch(PDO::FETCH_OBJ)->idv;
 
         // Actualiza los datos de ususario y venta en el articulo
-        $sql = "UPDATE articulo SET idu_a = ?, idv_a = ? WHERE id_a = ?;";
-        $sql = $db->prepare($sql);
-        $sql->bindValue(1, $idu_v);
-        $sql->bindValue(2, $idv_a);
-        $sql->bindValue(3, $id_a);
-        $result['UPDATE'] = $sql->execute();
+        foreach ($id_a as $key => $value) {
+            $sql = "UPDATE articulo SET idu_a = ?, idv_a = ? WHERE id_a = ?;";
+            $sql = $db->prepare($sql);
+            $sql->bindValue(1, $idu_v);
+            $sql->bindValue(2, $idv_a);
+            $sql->bindValue(3, $value);
+            $result["UPDATE$key"] = $sql->execute();
+        }
         return $result;
     }
 
