@@ -13,7 +13,7 @@ switch ($_GET["option"]) {
 
     // Lo unico que hice..........
     case "login";
-        $datos = $modelos->login($body['usuario_u'], $body['email_u'], $body['pass']);
+        $datos = $modelos->login($body['usuario_u'], $body['pass']);
         echo json_encode($datos);
         break;
 
