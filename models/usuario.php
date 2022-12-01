@@ -15,12 +15,12 @@ class Usuario extends Conexion {
     }
 
 
-    public function login($usuario_u,$email_u,$pass){
+    public function login($usuario_u,$pass){
         $db = parent::connect();
         parent::set_names();
         $sql = "SELECT id_u, pass FROM usuario WHERE email_u = ? OR usuario_u = ?;";
         $sql = $db->prepare($sql);
-        $sql->bindValue(1, $email_u);
+        $sql->bindValue(1, $usuario_u);
         $sql->bindValue(2, $usuario_u);
         $sql->execute();
         $query = $sql->fetch();
