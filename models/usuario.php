@@ -18,7 +18,7 @@ class Usuario extends Conexion {
     public function login($usuario_u,$pass){
         $db = parent::connect();
         parent::set_names();
-        $sql = "SELECT id_u, pass FROM usuario WHERE email_u = ? OR usuario_u = ?;";
+        $sql = "SELECT id_u, pass, saldo_u FROM usuario WHERE email_u = ? OR usuario_u = ?;";
         $sql = $db->prepare($sql);
         $sql->bindValue(1, $usuario_u);
         $sql->bindValue(2, $usuario_u);
@@ -27,7 +27,7 @@ class Usuario extends Conexion {
         // Si encuentra al usuario y la contraseña coincide entonces retorna los datos
         if ($query && password_verify($pass, $query['pass'])) {
             $result['id_u'] = $query['id_u'];
-
+            $result['saldo_u'] = $query['saldo_u'];
         } else {
             $result['id_u'] = 0;
         }
