@@ -70,6 +70,7 @@ class Usuario extends Conexion {
         $db = parent::connect();
         parent::set_names();
         $sql = "SELECT * FROM usuario WHERE id_u=1;";
+        
         $sql = $db->prepare($sql);
         $sql->execute();
         return $sql->fetchAll(PDO::FETCH_OBJ);
