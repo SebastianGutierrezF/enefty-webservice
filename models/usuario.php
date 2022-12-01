@@ -66,12 +66,12 @@ class Usuario extends Conexion {
     //     $sql->execute();
     //     return $sql->fetchAll(PDO::FETCH_OBJ);
     // }
-    function get_usuario_x_id() {
+    function get_usuario_x_id($id_u) {
         $db = parent::connect();
         parent::set_names();
-        $sql = "SELECT * FROM usuario WHERE id_u=1;";
-        
+        $sql = "SELECT * FROM usuario WHERE id_u = ?;";
         $sql = $db->prepare($sql);
+        $sql->bindValue(1, $id_u);
         $sql->execute();
         return $sql->fetchAll(PDO::FETCH_OBJ);
     }

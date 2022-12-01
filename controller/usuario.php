@@ -26,7 +26,7 @@ switch ($_GET["option"]) {
         echo json_encode($datos);
         break;
     case "traerUsuarioxid";
-        $datos = $modelos->get_usuario_x_id();
+        $datos = $modelos->get_usuario_x_id($body['id_u']);
         echo json_encode($datos);
         break;
 }
