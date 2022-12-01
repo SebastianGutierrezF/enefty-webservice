@@ -37,15 +37,26 @@ class Venta extends Conexion {
     function traerVentas() {
         $db = parent::connect();
         parent::set_names();
-        $sql = "SELECT * FROM venta JOIN articulo ON articulo.idv_a = venta.id_v GROUP BY venta.id_v;";
+        $sql = "SELECT * FROM venta JOIN usuario ON venta.idu_v = usuario.id_u;";
         $sql = $db->prepare($sql);
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function traerArticulos($id_v) {
+        $db = parent::connect();
+        parent::set_names();
+        $sql = "SELECT * FROM venta JOIN articulo ON articulo.idv_a = venta.id_v WHERE venta.id_v = ?;";
+        $sql = $db->prepare($sql);
+        $sql->bindValue(1, $id_v);
+        $sql->execute();
         return $sql->fetchAll(PDO::FETCH_OBJ);
     }
 
     function traerVentasUsuario($id_u) {
         $db = parent::connect();
         parent::set_names();
-        $sql = "SELECT * FROM venta JOIN articulo ON articulo.idv_a = venta.id_v WHERE articulo.idu_a = ? GROUP BY venta.id_v;";
+        $sql = "SELECT * FROM venta JOIN articulo ON articulo.idv_a = venta.id_v WHERE articulo.idu_a = ?;";
         $sql = $db->prepare($sql);
         $sql->bindValue(1, $id_u);
         return $sql->fetchAll(PDO::FETCH_OBJ);
