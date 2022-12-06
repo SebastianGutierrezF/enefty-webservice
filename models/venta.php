@@ -31,6 +31,26 @@ class Venta extends Conexion {
             $sql->bindValue(3, $value);
             $result["UPDATE$key"] = $sql->execute();
         }
+        // Obtener el saldo actual del usuario
+        $sql = "SELECT saldo_u FROM usuario WHERE id_u = ?;";
+        $sql = $db->prepare($sql);
+        $sql->bindValue(1, $idu_v);
+        $sql->execute();
+        $result["DATA"] = $sql->fetch(PDO::FETCH_OBJ);
+        
+        // Actualizar el saldo del usuario
+        $sql = "UPDATE usuario SET saldo_u = ? WHERE id_u = ?;";
+        $sql = $db->prepare($sql);
+        $sql->bindValue(1, ($result["DATA"]->saldo_u) - $mFinal_v);
+        $sql->bindValue(2, $idu_v);
+        $sql->execute();
+
+        // Obtener al saldo actualizado
+        $sql = "SELECT saldo_u FROM usuario WHERE id_u = ?;";
+        $sql = $db->prepare($sql);
+        $sql->bindValue(1, $idu_v);
+        $sql->execute();
+        $result["DATA"] = $sql->fetch(PDO::FETCH_OBJ);
         return $result;
     }
 
