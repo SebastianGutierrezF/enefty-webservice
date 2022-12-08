@@ -73,12 +73,13 @@ class Venta extends Conexion {
         return $sql->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function traerVentasUsuario($id_u) {
+    function traerVentasUsuario($idu_a) {
         $db = parent::connect();
         parent::set_names();
         $sql = "SELECT * FROM venta JOIN articulo ON articulo.idv_a = venta.id_v WHERE articulo.idu_a = ?;";
         $sql = $db->prepare($sql);
-        $sql->bindValue(1, $id_u);
+        $sql->bindValue(1, $idu_a);
+        $sql->execute();
         return $sql->fetchAll(PDO::FETCH_OBJ);
     }
 
