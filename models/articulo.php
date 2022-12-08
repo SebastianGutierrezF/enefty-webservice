@@ -19,7 +19,7 @@ class Articulo extends Conexion {
     function obtenerProductos() {
         $db = parent::connect();
         parent::set_names();
-        $sql = "SELECT * FROM articulo;";
+        $sql = "SELECT * FROM articulo WHERE idv_a IS NULL;";
         $sql = $db->prepare($sql);
         $sql->execute();
         return $sql->fetchAll(PDO::FETCH_OBJ);
@@ -28,7 +28,7 @@ class Articulo extends Conexion {
     function obtenerProductosxCategoria($idcat_a) {
         $db = parent::connect();
         parent::set_names();
-        $sql = "SELECT * FROM articulo WHERE idcat_a = ?;";
+        $sql = "SELECT * FROM articulo WHERE idcat_a = ? AND idv_a IS NULL;";
         $sql = $db->prepare($sql);
         $sql->bindValue(1, $idcat_a);
         $sql->execute();
