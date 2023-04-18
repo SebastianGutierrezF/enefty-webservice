@@ -19,7 +19,7 @@ class Articulo extends Conexion {
     function obtenerProductos() {
         $db = parent::connect();
         parent::set_names();
-        $sql = "SELECT * FROM articulo WHERE idv_a IS NULL;";
+        $sql = "SELECT * FROM articulo;";
         $sql = $db->prepare($sql);
         $sql->execute();
         return $sql->fetchAll(PDO::FETCH_OBJ);
